@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>AI Screening Tool</title>
+</head>
+<body>
+    <div class="relative isolate overflow-hidden bg-gray-800 text-white">
+        <div class="absolute inset-0 -z-10">
+            <img src="https://res.cloudinary.com/dtsuvx8dz/image/upload/v1716357077/o1imiun4wwcpia9uucgs.gif" 
+                 class="w-full h-full object-cover opacity-30" alt="Background Image">
+        </div>
+        <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:px-8 lg:py-40">
+            <div class="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
+                <img class="h-12" src="https://res.cloudinary.com/dtsuvx8dz/image/upload/v1706986565/hqatxpsjdg3zeql20jfe.png" alt="Company Logo">
+                <h1 class="mt-10 text-5xl font-bold tracking-tight text-white sm:text-6xl">
+                    Smarter Hiring with AI-Powered Screening
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-gray-300">
+                    Empower recruiters with AI-driven screening, ensuring faster, unbiased, and more efficient candidate selection. Save time and focus on top talent effortlessly.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row sm:items-center gap-x-6">
+                    <form action="/process" method="post" enctype="multipart/form-data" class="flex flex-col sm:flex-row gap-x-4">
+                        <input type="file" name="pdf_doc" id="pdf_doc" accept=".pdf" 
+                               class="drop-shadow-md bg-white/10 font-semibold leading-6 text-gray-900 border border-blue-300 py-2 px-4 rounded-2xl text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-400 hover:file:bg-blue-100">
+                        <button type="submit" class="bg-blue-500 px-8 rounded-2xl py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600">
+                            Process Resume
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="w-screen h-full pb-8">
+            <div class="flex flex-col justify-center items-center">
+                <div id="dictionaryValues" class="border border-white max-w-7xl p-8 text-white"></div>
+                {% if data %}
+                <script>
+                    function displayDictionaryValues(data) {
+                        var dictionaryValuesDiv = document.getElementById("dictionaryValues");
+                        var html = generateHTML(data);
+                        dictionaryValuesDiv.innerHTML = html;
+                    }
+
+                    function generateHTML(data) {
+                        var html = "";
+                        for (var key in data) {
+                            if (data.hasOwnProperty(key)) {
+                                html += `<p><strong>${key}:</strong> ${typeof data[key] === 'object' ? generateHTML(data[key]) : data[key]}</p>`;
+                            }
+                        }
+                        return html;
+                    }
+                    displayDictionaryValues({{ data | tojson }});
+                </script>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
