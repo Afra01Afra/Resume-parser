@@ -1,45 +1,50 @@
-# Resume Parser App (Flask + NLP)
+Resume Parser App (Flask + NLP)
+Objective
+The Resume Parser App is designed to help recruiters quickly screen and analyze resumes. By uploading a PDF, the system extracts key details such as personal information, education, work experience, skills, projects, and certifications.
 
-### Objective
+This tool leverages Flask, Natural Language Processing (NLP), and OpenAI's API to enhance the resume screening process, making hiring decisions faster and more efficient.
 
-This project is a basic resume parser app built using Flask. The app allows users to upload their resumes in PDF format, and it extracts key details such as personal information, education history, work experience, skills, projects, and certifications. The extracted data is presented in JSON format, giving users an overview of their resume content.
+Features
+✅ Upload resumes in PDF format
+✅ Extracts structured data: Name, Contact, Experience, Skills, and more
+✅ Uses NLP & AI for accurate text processing
+✅ Displays extracted information in JSON format
+✅ Recruiter-friendly UI with enhanced visuals & icons
 
-To achieve this, the app utilizes Python along with libraries like Flask, pdfminer.six, docx2txt, nltk, and spacy for natural language processing. These tools help automate the process of extracting structured information from resumes, making the application useful for job seekers.
+Installation
+Clone the repository
 
-This app provides users with an easy way to check if their resumes are correctly formatted for parsing, making it suitable for general screening and analysis.
+bash
+Copy code
+git clone https://github.com/your-repo/resume-parser.git
+cd resume-parser
+Install dependencies
 
-### Features
+bash
+Copy code
+pip install -r requirements.txt
+Configure OpenAI API key
 
-- Allows users to upload resumes in PDF format.
-- Extracts structured data such as personal details, education, work experience, and skills.
-- Displays extracted information in JSON format.
-- Uses NLP techniques to process resume text.
+Add your OpenAI API key to the config.yaml file:
+yaml
+Copy code
+openai_api_key: "your_openai_api_key_here"
+Run the application
 
-### Installation
+bash
+Copy code
+python app.py
+Access the app
+Open your browser and go to:
+👉 http://localhost:8000
 
-Follow these steps to set up the project:
-
-1. Clone this repository to your local system.
-2. Navigate to the project directory.
-3. Install dependencies using:
-   ```
-   pip install -r requirements.txt
-   ```
-4. Add your OpenAI API key to the configuration file if required.
-5. Start the application:
-   ```
-   python app.py
-   ```
-6. Open your browser and go to:
-   ```
-   http://localhost:8000
-   ```
-
-### Usage
-
-- Upload a resume in PDF format.
-- The app extracts relevant details and presents them in JSON format.
-- Users can review the extracted data to check if their resumes are structured appropriately for screening purposes.
-
-This project serves as a basic implementation of a resume parser, demonstrating the use of Flask and NLP for text extraction and structured analysis.
+Usage
+Upload a PDF resume.
+The AI extracts key details.
+Data is displayed in JSON format for easy review.
+Recruiters can screen applicants faster and make data-driven hiring decisions.
+Why Use This?
+🔹 Automates resume screening
+🔹 Reduces manual effort for recruiters
+🔹 Enhances hiring accuracy with AI-powered insights
 
